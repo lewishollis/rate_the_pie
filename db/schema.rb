@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_150819) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_12_161023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mince_pies", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "image"
+    t.decimal "price", precision: 8, scale: 2
+    t.string "taste"
+    t.float "overall_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "mince_pie_id", null: false
+    t.integer "price_rating"
+    t.integer "taste_rating"
+    t.float "overall_rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mince_pie_id"], name: "index_ratings_on_mince_pie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_150819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ratings", "mince_pies", column: "mince_pie_id"
+  add_foreign_key "ratings", "users"
 end
