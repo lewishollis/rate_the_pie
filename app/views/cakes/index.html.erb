@@ -1,1 +1,11 @@
-<p>yo!</p>
+<h1>Cakes</h1>
+
+<ul>
+  <% @cakes.each do |cake| %>
+    <li>
+      <h2><%= cake.name %></h2>
+      <p><%= cake.description %></p>
+      <p><strong>Price:</strong> <%= number_to_currency(cake.price) %></p>
+    </li>
+  <% end %>
+</ul>
