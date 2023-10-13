@@ -1,0 +1,6 @@
+<h1><%= @cake.name %></h1>
+
+<p><strong>Description:</strong> <%= @cake.description %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@cake.price) %></p>
+
+<%= link_to 'Back to Cakes', cakes_path %>

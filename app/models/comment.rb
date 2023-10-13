@@ -1,4 +1,4 @@
-class Rating < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :cake
 end
