@@ -1,0 +1,29 @@
+<h1>Mince cakes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Taste</th>
+      <th>Overall Rating</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cakes.each do |cake| %>
+      <tr>
+        <td><%= link_to cake.name, cake %></td>
+        <td>$<%= number_to_currency(cake.price) %></td>
+        <td><%= cake.taste %></td>
+        <td><%= cake.overall_rating %></td>
+        <td>
+          <%= link_to 'Edit', edit_cake_path(cake) %>
+          <%= link_to 'Delete', cake, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Mince cake', new_cake_path %>
