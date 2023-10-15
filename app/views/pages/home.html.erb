@@ -10,8 +10,10 @@
 <!-- Search Bar -->
 <section class="search">
     <h2>Search for Something</h2>
-    <form action="search-results.html" method="get">
-        <input type="text" name="query" placeholder="Search...">
-        <button type="submit">Search</button>
-    </form>
+<%= form_with(url: cakes_path, method: 'get') do |form| %>
+  <%= form.text_field :query, placeholder: 'Search Cakes' %>
+  <%= form.submit 'Search' %>
+<% end %>
+
+
 </section>
