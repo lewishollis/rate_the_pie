@@ -1,6 +1,10 @@
 class CakesController < ApplicationController
   def index
-    @cakes = Cake.all
+    if params[:query].present?
+      @cakes = Cake.search_by_name_and_description(params[:query])
+    else
+      @cakes = Cake.all
+    end
   end
 
   def show
