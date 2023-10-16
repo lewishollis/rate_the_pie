@@ -1,19 +1,17 @@
-<nav>
-    <ul>
-        <li><%= link_to "Log in", user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
-    </ul>
-</nav>
-<div class="home-image">
-    <img src="/assets/_5432dd8b-d909-4265-9777-32921ab9f5e3.jpeg" alt="Giant mince pie with opinions popping out of it!">
-</div>
+<div class="container-fluid">
 <!-- Search Bar -->
-<section class="search">
-    <h2>Search for Something</h2>
-<%= form_with(url: cakes_path, method: 'get') do |form| %>
-  <%= form.text_field :query, placeholder: 'Search Cakes' %>
-  <%= form.submit 'Search' %>
-<% end %>
+  <div class="search">
+    <%= form_with(url: cakes_path, method: 'get') do |form| %>
+      <%= form.text_field :query, placeholder: 'Search Cakes' %>
+      <%= form.submit 'Search' %>
+    <% end %>
+  </div>
+  <div class="home-image">
+    <img src="/assets/_5432dd8b-d909-4265-9777-32921ab9f5e3.jpeg" alt="Giant mince pie with opinions popping out of it">
+  </div>
 
-
-</section>
+  <div>
+    <%= link_to "Log in", user_session_path, class: "button-small" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "button-small" %>
+  </div>
+</div>
