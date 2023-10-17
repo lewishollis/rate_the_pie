@@ -1,11 +1,25 @@
-<h1>Cakes</h1>
+<div class="container-fluid">
+  <h1>Cakes</h1>
 
-<ul>
-  <% @cakes.each do |cake| %>
-    <li>
-      <h2><%= cake.name %></h2>
-      <p><%= cake.description %></p>
-      <p><strong>Price:</strong> <%= number_to_currency(cake.price) %></p>
-    </li>
-  <% end %>
-</ul>
+  <div class="cake-cards">
+    <% @cakes.each do |cake| %>
+      <div class="cake-card">
+        <img src="<%= cake.image_url %>" alt="<%= cake.name %>">
+        <div class="cake-details">
+          <h2><%= link_to cake.name, cake %></h2>
+          <div class="cake-text">
+            <p>Price: <%= number_to_currency(cake.price) %></p>
+            <p>Taste: <%= cake.taste %></p>
+            <p>Overall Rating: <%= cake.overall_rating %></p>
+          </div>
+          <div class="actions">
+            <%= link_to 'Edit', edit_cake_path(cake) %>
+            <%= link_to 'Delete', cake, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'New Mince cake', new_cake_path %>
+</div>
